@@ -1,21 +1,26 @@
 const userMessage = document.querySelector('.message-input');
 const chatBody = document.querySelector('.chat-body'); 
+const submitBtn = document.querySelector('#submit-message');
 
 let user = {
     text: null
 }
 
-userMessage.addEventListener('keydown', handleFlow)
+userMessage.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && userMessage.value) {    
+      handleFlow(e)
+    }}
+);
+
+submitBtn.addEventListener('click', (e) =>  handleFlow(e) );
 
 function handleFlow(e) {
-    const text = userMessage.value;
-    if (text === " ") return;
-    if (e.key === 'Enter') {
-        displayText(text);
+    e.preventDefault();
+    user.text = userMessage.value.trim();
+        displayText(user.text);
         displayBotText();
-        generateBotResponse(text)
-        userMessage.value = ' ';
-    }
+        generateBotResponse(user.text)
+        userMessage.value = '';
 }
 
 function displayText(message) {

@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bot-message {
     display: flex;
-    align-items: center;
+    align-items:flex-end;
     gap: 0.5em;
 }
 
