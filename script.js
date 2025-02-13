@@ -5,17 +5,18 @@ let user = {
     text: null
 }
 
-// will return the string typed in text box before hitting enter
-userMessage.addEventListener('keydown', (e) => {
-    if (userMessage.value === " ") return;
+userMessage.addEventListener('keydown', handleFlow)
+
+function handleFlow(e) {
+    const text = userMessage.value;
+    if (text === " ") return;
     if (e.key === 'Enter') {
-        console.log(e)
-        console.log(userMessage.value)
-        displayText(userMessage.value);
-        generateBotResponse(userMessage.value)
+        displayText(text);
+        displayBotText();
+        generateBotResponse(text)
         userMessage.value = ' ';
     }
-})
+}
 
 function displayText(message) {
     const textDiv = document.createElement('div');
@@ -31,7 +32,8 @@ function displayText(message) {
     chatBody.scrollTo({top: chatBody.scrollHeight, behavior: "smooth"})
 }
 
-function displayBotText(reply) {
+// create bot message div with thinking animation
+function displayBotText() {
     const textDiv = document.createElement('div');
     textDiv.classList.add('chat-message', 'bot-message');
     
@@ -50,13 +52,22 @@ function displayBotText(reply) {
     textDiv.appendChild(svg);
 
     const text = document.createElement('div');
-	text.classList.add('message-text');
-	text.textContent = reply;
+    text.classList.add('message-text');
+    
+    const think = document.createElement('div');
+    think.classList.add('thinking-indicator');
+
+    for (let i = 0; i < 3; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        think.appendChild(dot)
+    }
+    text.appendChild(think);
 	textDiv.appendChild(text);
 
-	chatBody.appendChild(textDiv);
+    chatBody.appendChild(textDiv);
+    chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
 }
-
 
 
 async function generateBotResponse(message) {
@@ -75,8 +86,10 @@ async function generateBotResponse(message) {
         })
 
         const json = await response.json();
-        const botReply = json.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g,"$1").trim();
-        displayBotText(botReply);
+        const botReply = json.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, "$1").trim();
+        const nodes = document.querySelectorAll('.message-text');
+        let messageDiv = nodes[nodes.length - 1];  // always accessing the last message div created by displaybot function
+        messageDiv.textContent = botReply;
     } catch (err) {
         console.log(err)
     } finally {
