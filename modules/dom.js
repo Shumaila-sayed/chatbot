@@ -1,4 +1,4 @@
-import { user } from "../script.js";
+import { user, userMessage } from "../script.js";
 const chatBody = document.querySelector('.chat-body');
 
 export function displayText() {
@@ -67,3 +67,22 @@ export function displayBotText() {
 	chatBody.appendChild(textDiv);
 	chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
 }
+
+const picker = new EmojiMart.Picker({
+	theme: 'light',
+	skinTonePosition: 'none',
+	previewPosition: 'none',
+	onClickOutside: (e) => {
+		if (e.target.id === 'emoji-picker') {
+			document.body.classList.toggle('show-emoji-picker');
+		} else {
+			document.body.classList.remove('show-emoji-picker');
+		}
+	},
+	onEmojiSelect: (emoji) => {
+		const { selectionStart: start, selectionEnd: end } = userMessage;
+		userMessage.setRangeText(emoji.native, start, end, 'end');
+		userMessage.focus();
+	},
+});
+document.querySelector('.chat-form').appendChild(picker);
