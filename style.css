@@ -74,7 +74,6 @@ input, button, textarea, select {
     padding: 0.8em ;
     overflow-wrap: break-word;
     word-break: break-all;
-    hyphens: auto;
 }
 
 .bot-message .message-text {
@@ -179,7 +178,6 @@ input, button, textarea, select {
 .chat-controls {
     display: flex;
     justify-content: center;
-    gap: 0.2em;
     padding-right: 0.7em;
 } 
 
@@ -205,6 +203,7 @@ button:hover {
     background: #164ada;
     display: none;
     color: #fff;
+    margin-left: 0.5em;
 }
 
 #submit-message:hover {
@@ -261,4 +260,21 @@ em-emoji-picker{
 
 body.show-emoji-picker em-emoji-picker {
     visibility: visible;
+}
+
+@media (max-width: 520px) {
+    body {
+        height: 93vh;
+    }
+    .chat-body {
+        margin-top: 5em;
+        height: 70%;
+    }
+    .chat-footer {
+       height: 10%;
+       margin-bottom: 1em;
+    }
+    .chat-form {
+        width: 80%;
+    }
 }
