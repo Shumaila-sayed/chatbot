@@ -10,9 +10,9 @@ export function displayText() {
 	text.textContent = user.text;
 	textDiv.appendChild(text);
 
-	let imageLoaded = Promise.resolve(); // Default resolved promise
+    let imageLoaded = Promise.resolve(); // Default resolved promise
 
-	if (Object.keys(user.file).length !== 0) {
+	if (Object.keys(user.file).length !== 0 && user.file.data !== null) {
 		const img = document.createElement('img');
 		img.src = `data:${user.file.mime_type};base64,${user.file.data}`;
 		img.classList.add('user-attachment');

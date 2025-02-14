@@ -147,13 +147,14 @@ input, button, textarea, select {
 }
 
 .chat-form {
+    position: relative;
     width: 60%;
     margin: auto;
     display: flex;
     align-items: center;
     background: #fff;
     border-radius: 1.5em;
-    border: 1px solid #CCCCE5;
+    border: 0.1em solid #CCCCE5;
 }
 
 .chat-form:focus-within {
@@ -161,12 +162,12 @@ input, button, textarea, select {
  }
 
 .message-input {
+    background: none;
     outline: none;
     border: none;
     width: 100%;
     min-height: 2.5em;
-    font-size: 1em;
-    opacity: 0.7;
+    font-size: 0.9em;
     padding: 0 0.8em;
 }
 
@@ -241,4 +242,18 @@ button:hover {
 #file-cancel {
     color: #ff0000;
     background: #fff;
+}
+
+em-emoji-picker{
+  position: absolute;
+  max-width: 24em;
+  max-height: 20em;
+  width: 100%;
+  left: 35%;
+  visibility: hidden;
+  transform: translateY(-58%);
+}
+
+body.show-emoji-picker em-emoji-picker {
+    visibility: visible;
 }
