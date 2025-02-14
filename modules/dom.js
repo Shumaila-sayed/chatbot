@@ -1,17 +1,34 @@
+import { user } from "../script.js";
 const chatBody = document.querySelector('.chat-body');
 
-export function displayText(message) {
+export function displayText() {
 	const textDiv = document.createElement('div');
 	textDiv.classList.add('chat-message', 'user-message');
 
 	const text = document.createElement('div');
 	text.classList.add('message-text');
-	text.textContent = message;
+	text.textContent = user.text;
 	textDiv.appendChild(text);
+
+	let imageLoaded = Promise.resolve(); // Default resolved promise
+
+	if (Object.keys(user.file).length !== 0) {
+		const img = document.createElement('img');
+		img.src = `data:${user.file.mime_type};base64,${user.file.data}`;
+		img.classList.add('user-attachment');
+		textDiv.appendChild(img);
+
+		imageLoaded = new Promise((resolve) => {
+			img.onload = resolve;
+			img.onerror = resolve; // Handle error to avoid blocking
+		});
+	}
 
 	chatBody.appendChild(textDiv);
 
-	chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
+	imageLoaded.then(() => {
+		chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
+	});
 }
 
 // create bot message div with thinking animation

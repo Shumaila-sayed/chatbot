@@ -21,7 +21,12 @@
                     <input type="text" placeholder="Message ChatBot..." class="message-input" required>
                     <div class="chat-controls">
                         <button type="button" class="material-symbols-rounded">sentiment_satisfied</button>
-                        <button type="button" class="material-symbols-rounded">attach_file</button>
+                        <div class="file-upload-wrapper">
+                          <input type="file" accept="images/*" id="file-input" hidden>
+                          <img src="#">
+                          <button type="button" id="file-output" class="material-symbols-rounded">attach_file</button>
+                          <button type="button" id="file-cancel" class="material-symbols-rounded">close</button>
+                        </div>
                         <button type="button" id="submit-message"  class="material-symbols-rounded">arrow_upward</button>
                     </div>
                 </form>

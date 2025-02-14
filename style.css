@@ -47,7 +47,6 @@ input, button, textarea, select {
 }
 
 .chat-message {
-    width: fit-content;
     max-width: 50%;
 }
 
@@ -69,6 +68,7 @@ input, button, textarea, select {
 }
 
 .message-text {
+    width: fit-content;
     padding: 0.8em ;
 }
 
@@ -78,13 +78,22 @@ input, button, textarea, select {
 }
 
 .user-message {
-  align-self: flex-end;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   gap: 0.5em;
+   align-self: flex-end;
 }
 
 .user-message .message-text {
     background-color: #6e8de4;
      border-radius: 1.4em 1.4em 0 1.4em ;
      color: #fff;
+}
+
+.user-attachment {
+    width: 60%;
+    border-radius: 0.6em;
 }
 
 .thinking-indicator {
@@ -112,8 +121,6 @@ input, button, textarea, select {
     animation-delay: 0.6s;
 }
 
-
-
 @keyframes dotpulse {
     0%, 40% {
         transform: translateY(0);
@@ -127,7 +134,6 @@ input, button, textarea, select {
     40% {
         opacity: 0.4;
     }
-    
 }
 
 .chat-footer {
@@ -166,9 +172,9 @@ input, button, textarea, select {
 
 .chat-controls {
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding-right: 0.5em;
+    gap: 0.2em;
+    padding-right: 0.7em;
 } 
 
 .chat-controls button {
@@ -178,7 +184,7 @@ input, button, textarea, select {
     font-size: 1.1rem;
     border: none;
     background: #fff;
-    opacity: 0.7;
+    color: #7f7f88;
     cursor: pointer;
     border-radius: 50%;
     background: none;
@@ -201,4 +207,38 @@ button:hover {
 
 .message-input:valid~.chat-controls #submit-message {
     display: block;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.file-upload-wrapper :where(img, button) {
+    position: absolute;
+}
+
+.file-upload-wrapper img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.file-upload-wrapper :where(img, #file-cancel) ,
+.file-uploaded #file-output {
+    display: none;
+}
+
+
+.file-uploaded img, 
+.file-uploaded:hover #file-cancel  {
+    display: block;
+}
+
+#file-cancel {
+    color: #ff0000;
+    background: #fff;
 }

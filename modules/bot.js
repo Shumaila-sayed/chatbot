@@ -1,13 +1,14 @@
+import { user } from "../script.js";
 const chatBody = document.querySelector('.chat-body');
 
-export async function generateBotResponse(message) {
+export async function generateBotResponse() {
 	const API_KEY = 'AIzaSyDX7I56dPaMUZsxuvuE09W4EeXV6CXvV8A';
 	const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
-			contents: [{ parts: [{ text: message }] }],
+			contents: [{ parts: [{ text: user.text }, ...(user.file.data ? [{ inline_data: user.file }] : [])] }],
 		}),
 	};
 	const nodes = document.querySelectorAll('.message-text');
@@ -24,7 +25,8 @@ export async function generateBotResponse(message) {
 	} catch (err) {
 		messageDiv.innerText = err.message;
 		messageDiv.style.color = '#ff0000';
-	} finally {
+    } finally {
+        user.file = {};
 		chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
 	}
 }
