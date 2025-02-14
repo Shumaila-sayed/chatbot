@@ -109,7 +109,7 @@ input, button, textarea, select {
 .dot {
     height: 0.3em;
     width: 0.3em;
-    background-color: #95abec;
+    background-color: #7996ec;
     border-radius: 50%;
     opacity: 0.8;
     animation: dotpulse 1.8s ease-in-out infinite;
