@@ -274,7 +274,7 @@ body.show-emoji-picker em-emoji-picker {
         width: 100%;
     }
     .chat-footer {
-       flex: 1;
+       flex: 2;
        width: 100%;
        margin: 0;
        padding: 0;
