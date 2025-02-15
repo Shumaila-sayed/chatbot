@@ -14,7 +14,7 @@ Chatbot is an AI-powered chat application built using HTML, CSS, and Vanilla Jav
 ## Demo 📂
 View it Live [Here](https://shumaila-sayed.github.io/chatbot/)
 
-![first look](./assets/Screenshot%20(52).png) ![thinking look](./assets/Screenshot%20(53).png) ![output look](./assets/Screenshot%20(54).png)
+![first look](./assets/Screenshot%20(52).png)
 
 ## Technologies Used 🛠️
 - **HTML**  – Structure and layout
