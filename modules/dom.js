@@ -1,4 +1,4 @@
-import { user, userMessage } from "../script.js";
+import { user, userMessage } from './script.js';
 const chatBody = document.querySelector('.chat-body');
 
 export function displayText() {
@@ -10,7 +10,7 @@ export function displayText() {
 	text.textContent = user.text;
 	textDiv.appendChild(text);
 
-    let imageLoaded = Promise.resolve(); // Default resolved promise
+	let imageLoaded = Promise.resolve(); // Default resolved promise
 
 	if (Object.keys(user.file).length !== 0 && user.file.data !== null) {
 		const img = document.createElement('img');
