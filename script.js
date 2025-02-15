@@ -57,7 +57,8 @@ fileInput.addEventListener('change', () => {
         }
         fileInput.value = '';
     }
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
+    userMessage.focus();
 })
 
 export { user, userMessage }
