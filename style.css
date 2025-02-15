@@ -72,8 +72,7 @@ input, button, textarea, select {
     max-width: 50%;
     min-width: fit-content;
     padding: 0.8em ;
-    overflow-wrap: break-word;
-    word-break: break-all;
+    hyphens: auto;
 }
 
 .bot-message .message-text {
@@ -262,19 +261,46 @@ body.show-emoji-picker em-emoji-picker {
     visibility: visible;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
     body {
-        height: 93vh;
+        height: 100vh;
+        overflow: none;
+        width: 100vw;
     }
     .chat-body {
         margin-top: 5em;
-        height: 70%;
+        height: 90vh;
+        padding: 1.5em 0.4em;
+        margin: 0;
+        min-width: 100vw;
     }
     .chat-footer {
-       height: 10%;
+       height: 10vh;
        margin-bottom: 1em;
+       min-width: 100vw;
+       margin: 0;
+       padding: 0.8em 0.5em 0 0.5em;
+       box-shadow: none;
+       border-radius: 0;
     }
     .chat-form {
         width: 80%;
     }
+    .chat-message {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 1024px) {
+    .chat-body {
+        margin-top: 5em;
+    }
+
+    .chat-footer {
+        height: 8%;
+    }
+
+    .chat-message {
+    max-width: 80%;
+   }
 }
