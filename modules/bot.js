@@ -40,8 +40,13 @@ export async function generateBotResponse() {
 		});
 
 	} catch (err) {
-		messageDiv.innerText = err.message;
+		if (err.message === "data is not defined") {
+			messageDiv.innerText = "Image type not supported";
+		} else {
+			messageDiv.innerText = err.message
+		}
 		messageDiv.style.color = '#ff0000';
+		chatHistory = []
     } finally {
         user.file = {};
 		chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
