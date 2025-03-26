@@ -22,7 +22,4 @@ View it Live [Here](https://shumaila-sayed.github.io/chatbot/)
 - **Vanilla JavaScript**  – Core logic and interactivity
 - **External APIs**  – AI-powered responses using the Gemini API
 
-## Future Enhancements 🎤
-- Implement speech-to-text and text-to-speech functionality. 
-
-Enjoy chatting with your AI assistant! 🚀
+Enjoy chatting!
